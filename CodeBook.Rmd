@@ -1,0 +1,29 @@
+---
+title: "CodeBook"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set
+library("dplyr")
+library("data.table")
+library("knitr")
+```
+
+This is an R Markdown document that summaries the result of `tidyData.txt`
+
+## Identifiers
+Activity
+```{r activity_labels, echo=FALSE}
+  activity_labels <- fread("./Data/UCI HAR Dataset/activity_labels.txt")
+  activity_labels$V2
+```
+Subject  -  The experiments have been carried out with a group of 30 volunteers. Each subject have a unique ID ranging from 1 to 30
+
+## Measurements
+
+```{r echo = FALSE, warning = FALSE}
+  selectedFeatures <- fread("./Data/tidyData.txt")
+  kable(names(selectedFeatures)[4:length(selectedFeatures)],col.names = "Feature")
+```
+  
